@@ -32,20 +32,28 @@
             z-index: 50;
         }
 
-        /* 搜尋框固定在標題下方 */
         .search-container {
             position: sticky;
-            top: 60px; /* 對應 header 高度 */
+            top: 60px;
             z-index: 40;
             background: white;
             padding: 12px 20px;
             border-bottom: 1px solid #e5e7eb;
         }
 
-        .content-body { padding: 20px; padding-bottom: 120px; }
+        .content-body { padding: 20px; padding-bottom: 140px; }
+
+        .section-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            padding-left: 8px;
+            border-left: 4px solid #1e40af;
+        }
 
         .entry {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             line-height: 1.6;
             display: flex;
             align-items: flex-start;
@@ -60,14 +68,14 @@
         }
 
         .indent-box {
-            padding-left: 20px;
+            padding-left: 16px;
             border-left: 2px solid #eff6ff;
-            margin: 8px 0 16px 12px;
+            margin: 8px 0 16px 10px;
         }
 
         .divider {
-            border-bottom: 1px solid #e5e7eb;
-            margin: 20px 0;
+            border-bottom: 2px dashed #e5e7eb;
+            margin: 24px 0;
         }
 
         .highlight-blue {
@@ -77,6 +85,7 @@
             text-underline-offset: 4px;
         }
 
+        /* 浮動按鈕 */
         .float-btns-container {
             position: fixed;
             right: 20px;
@@ -100,15 +109,14 @@
         }
 
         .btn-base:active { transform: scale(0.9); }
-
         .btn-fib4 { background: #2563eb; width: 80px; height: 80px; }
         .btn-fib4 .fib-text { font-size: 18px; font-weight: 800; }
         .btn-fib4 .sub-label { font-size: 10px; font-weight: 500; }
-
         .btn-table { background: #10b981; width: 70px; height: 70px; align-self: flex-end; }
         .btn-table .icon { font-size: 18px; }
         .btn-table .label { font-size: 9px; font-weight: bold; text-align: center; line-height: 1.2; }
 
+        /* Modal */
         #modal {
             display: none;
             position: fixed;
@@ -132,24 +140,27 @@
 </head>
 <body>
 
-    <div class="main-container">
-        <header class="header-banner">
-            <h1 class="text-lg font-bold">114.06.01 生效之 HBV 健保給付規定</h1>
-        </header>
+<div class="main-container">
+    <header class="header-banner text-center">
+        <h1 class="text-lg font-bold">HBV 健保給付規定 (114.06.01)</h1>
+    </header>
 
-        <div class="search-container">
-            <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="搜尋關鍵字 (如：懷孕, 肝硬化...)" 
-                   class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="搜尋關鍵字 (如：懷孕, 抗藥性...)" 
+               class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm">
+    </div>
+
+    <div class="content-body">
+        <div class="section-title text-blue-900">HBsAg+ 之肝代償不全</div>
+        <div class="indent-box">
+            <div class="entry"><div class="text-content font-medium text-gray-600 italic text-sm">(PT延長≧3秒或Total-Bilirubin≧2.0mg/dL)</div></div>
+            <div class="entry"><div class="text-content">• HBeAg(+) 療程: 治療至e抗原轉陰並再給付最多12個月。</div></div>
+            <div class="entry"><div class="text-content">• HBeAg(-) 療程: 24~36個月，每次間隔6個月連續三次驗不出DNA時停藥。</div></div>
         </div>
 
-        <div class="content-body">
-            <div class="entry"><div class="text-content font-bold text-blue-900">HBsAg+之肝代償不全 <span class="text-sm font-normal text-gray-600">(PT延長≧3秒或Total -Bilirubin≧2.0mg/dL)</span></div></div>
-            <div class="entry"><div class="text-content">HBeAg(+) 療程: 治療至e抗原轉陰並再給付最多12個月。</div></div>
-            <div class="entry"><div class="text-content">HBeAg(-) 療程: 24~36個月，治療期間需檢驗至血清HBV DNA連續三次，每次間隔 6個月，均驗不出HBV DNA時停藥。</div></div>
+        <div class="divider"></div>
 
-            <div class="divider"></div>
-
-            <div class="entry"><div class="text-content font-bold text-gray-800">HBsAg(+)或 HBsAg(-)且anti-HBc(+)</div></div>
+        <div class="entry"><div class="text-content font-bold text-gray-800">HBsAg(+)或 HBsAg(-)且anti-HBc(+)</div></div>
             
             <div class="entry"><div class="text-content">(1) 化療預防性使用 <span class="sub-text">(接受癌症化學療法，經照會消化系專科醫師同意後，於化學療法前 1週開始給付使用，直至化學療法結束後6個月。)</span></div></div>
             <div class="entry"><div class="text-content">(2) 化療中發作 <span class="sub-text">(接受癌症化學療法中，B型肝炎發作者，經照會消化系專科醫師同意後，可長期使用。)</span></div></div>
@@ -180,6 +191,7 @@
                 <div class="entry"><div class="text-content">(1) ALT ≧ 5X，且無肝功能代償不全。</div></div>
                 <div class="entry"><div class="text-content">(2) 2X < ALT < 5X。</div></div>
                 <div class="entry"><div class="text-content">(3) ALT > X (半年內兩次以上，間隔 > 3 個月) 且肝纖維化 ≧ F3。</div></div>
+                <div class="entry"><div class="text-content text-blue-700 text-sm">療程: 治療至e抗原轉陰後再給付最多12個月。</div></div>
             </div>
 
             <div class="entry"><div class="text-content highlight-blue">HBeAg(-) 且 HBV-DNA ≧ 2,000 IU/mL</div></div>
@@ -187,98 +199,123 @@
                 <div class="entry"><div class="text-content">(1) ALT ≧ 2X <span class="sub-text">(*非 ETV/TAF 藥物需半年內 2 次)</span></div></div>
                 <div class="entry"><div class="text-content">(2) ALT > X 且 HBV DNA ≧ 20,000 IU/mL，且肝纖維化 ≧ F2。</div></div>
                 <div class="entry"><div class="text-content text-xs text-gray-400 mt-1">*註：非使用 ETV 或 TAF 藥物者，需符合肝纖維化程度 ≧ F3。</div></div>
+                <div class="entry"><div class="text-content text-blue-700 text-sm">療程: DNA連續三次(間隔6月)驗不出時停藥，至多36個月。</div></div>
             </div>
 
-            <div class="divider"></div>
+        <div class="divider"></div>
 
-            <div class="entry"><div class="text-content font-bold text-gray-800">接受免疫抑制劑治療</div></div>
-            <div class="indent-box">
-                <div class="entry"><div class="text-content">• Rituximab</div></div>
-                <div class="entry"><div class="text-content">• Anthracycline 類衍生物。</div></div>
-                <div class="entry"><div class="text-content">• 中高劑量類固醇 (Prednisolone ≧ 20mg/day，持續 > 4 週。)</div></div>
-            </div>
-            <div class="entry"><div class="text-content">(1) HBsAg(+)預防性使用：治療前 1 週起，至停藥後 6 個月內。</div></div>
-            <div class="entry"><div class="text-content">(2) HBsAg(+)或 HBsAg(-)且anti-HBc(+)治療後發作：給付至停用後 6 個月。</div></div>
+        <div class="section-title text-gray-800">接受免疫抑制劑治療</div>
+        <div class="indent-box bg-blue-50 p-2 rounded text-sm mb-3">
+            <div>• Rituximab / Anthracycline 類</div>
+            <div>• 高劑量類固醇 (Prednisolone≧20mg/d 且 >4週)</div>
+        </div>
+        <div class="entry"><div class="text-content"><b>(1)  HBsAg(+)預防:</b> 前1週至停藥後6個月。</div></div>
+        <div class="entry"><div class="text-content"><b>(2)  HBsAg(+)或 HBsAg(-)且anti-HBc(+)治療後發作者:</b> 給付至停藥後6個月。</div></div>
+
+        <div class="divider"></div>
+
+        <div class="section-title text-red-800">抗藥性病毒株專區</div>
+        <div class="indent-box">
+            <div class="entry"><div class="text-content text-sm leading-relaxed text-gray-700">
+                1. 使用 Lamivudine(LAM)、entecavir(ETV)0.5/1.0、telbivudine(LDT) 出現抗藥性(DNA上升 > 1 log)，可擇一：<br>
+                (1) 原藥 + Adefovir 合併治療。<br>
+                (2) 改用 ETV 1.0mg (限 LAM 抗藥)。<br>
+                (3) 改用 Interferon (IFN) 治療1年。<br>
+                (4) 改用 <b>TDF</b> 或 <b>TAF</b> 單一藥物治療。<br>
+                (5) 原救援治療失敗者，改用 TDF 或 TAF 單一救援。
+            </div></div>
+            <div class="entry mt-3"><div class="text-content text-sm">
+                2. 復發者可再接受 TDF/TAF 或合併療法，次數不限。
+            </div></div>
+            <div class="entry"><div class="text-content text-sm leading-relaxed text-gray-700">
+                3. 下列病患長期使用LAM、ETV 0.5mg、LDT，若出現抗藥性，比照第1項規定處理:<br>
+                (1) 肝硬化。<br>
+                (2) 接受非肝臟之器官移植後發作。<br>
+                (3) 接受肝臟移植，須持續接受免疫抑制劑時。<br>
+            </div></div>
+            <div class="entry mt-3"><div class="text-content text-sm">
+                4. 多重抗藥病毒株：可 TDF/TAF 單一治療，或 ETV 1.0mg + TDF/TAF 合併治療。
+            </div></div>
         </div>
     </div>
+</div>
 
-    <div class="float-btns-container">
-        <button onclick="openModal()" class="btn-base btn-table">
-            <span class="icon">📊</span>
-            <span class="label">纖維化<br>對照表</span>
-        </button>
+<div class="float-btns-container">
+    <button onclick="openModal()" class="btn-base btn-table">
+        <span class="icon">📊</span>
+        <span class="label">纖維化<br>對照表</span>
+    </button>
+    <a href="https://subechen-wq.github.io/fib4-calculator/" target="_blank" class="btn-base btn-fib4">
+        <span class="fib-text">FIB-4</span>
+        <span class="sub-label">計算機</span>
+    </a>
+</div>
 
-        <a href="https://subechen-wq.github.io/fib4-calculator/" target="_blank" class="btn-base btn-fib4">
-            <span class="fib-text">FIB-4</span>
-            <span class="sub-label">計算機</span>
-        </a>
-    </div>
-
-    <div id="modal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="bg-indigo-600 text-white px-4 py-3 flex justify-between items-center sticky top-0">
-                <h3 class="font-bold">肝纖維化分期對照表 (Fibrosis)</h3>
-                <button onclick="closeModal()" class="text-2xl leading-none">&times;</button>
-            </div>
-            <div class="p-4 overflow-x-auto">
-                <table class="w-full text-center border-collapse">
-                    <thead>
-                        <tr class="bg-indigo-50 text-indigo-900 border-b-2 border-indigo-200">
-                            <th class="py-2 px-1 font-bold">分期</th>
-                            <th class="py-2 px-1 font-bold">FIB-4</th>
-                            <th class="py-2 px-1 font-bold">Fibroscan</th>
-                            <th class="py-2 px-1 font-bold">ARFI</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-sm">
-                        <tr class="border-b border-gray-100"><td class="py-3 font-bold bg-gray-50">F0</td><td class="py-3 text-gray-500">&lt; 1.3</td><td class="py-3 text-gray-500">&lt; 6.5 kPa</td><td class="py-3 text-gray-500">&lt; 1.3 m/s</td></tr>
-                        <tr class="border-b border-gray-100"><td class="py-3 font-bold bg-gray-50 text-blue-600">F1</td><td class="py-3">≧ 1.3</td><td class="py-3">≧ 6.5 kPa</td><td class="py-3">≧ 1.3 m/s</td></tr>
-                        <tr class="border-b border-gray-100"><td class="py-3 font-bold bg-gray-50 text-green-600">F2</td><td class="py-3 font-bold">≧ 2.1</td><td class="py-3 font-bold">≧ 8.0 kPa</td><td class="py-3 font-bold">≧ 1.5 m/s</td></tr>
-                        <tr class="border-b border-gray-100"><td class="py-3 font-bold bg-gray-50 text-orange-600">F3</td><td class="py-3 font-bold">≧ 3.25</td><td class="py-3 font-bold">≧ 9.5 kPa</td><td class="py-3 font-bold">≧ 1.8 m/s</td></tr>
-                        <tr><td class="py-3 font-bold bg-gray-50 text-red-600">F4</td><td class="py-3 font-bold">≧ 6.5</td><td class="py-3 font-bold">≧ 12.0 kPa</td><td class="py-3 font-bold">≧ 1.98 m/s</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="bg-gray-50 px-4 py-2 text-[10px] text-gray-400 text-center">
-                * 本表數據僅供臨床評估參考
-            </div>
+<div id="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="bg-indigo-600 text-white px-4 py-3 flex justify-between items-center sticky top-0 shadow-md">
+            <h3 class="font-bold">肝纖維化分期對照表</h3>
+            <button onclick="closeModal()" class="text-2xl">&times;</button>
+        </div>
+        <div class="p-4 overflow-x-auto">
+            <table class="w-full text-center border-collapse">
+                <thead>
+                    <tr class="bg-indigo-50 text-indigo-900 border-b-2 border-indigo-200 text-xs">
+                        <th class="py-2 font-bold">分期</th>
+                        <th class="py-2 font-bold">FIB-4</th>
+                        <th class="py-2 font-bold">Fibroscan</th>
+                        <th class="py-2 font-bold">ARFI</th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm">
+                    <tr class="border-b border-gray-100"><td class="py-3 font-bold bg-gray-50">F0</td><td class="py-3">&lt; 1.3</td><td class="py-3">&lt; 6.5 kPa</td><td class="py-3">&lt; 1.3 m/s</td></tr>
+                    <tr class="border-b border-gray-100"><td class="py-3 font-bold bg-gray-50 text-blue-600">F1</td><td class="py-3">≧ 1.3</td><td class="py-3">≧ 6.5</td><td class="py-3">≧ 1.3</td></tr>
+                    <tr class="border-b border-gray-100"><td class="py-3 font-bold bg-gray-50 text-green-600">F2</td><td class="py-3 font-bold">≧ 2.1</td><td class="py-3 font-bold">≧ 8.0</td><td class="py-3 font-bold">≧ 1.5</td></tr>
+                    <tr class="border-b border-gray-100"><td class="py-3 font-bold bg-gray-50 text-orange-600">F3</td><td class="py-3 font-bold">≧ 3.25</td><td class="py-3 font-bold">≧ 9.5</td><td class="py-3 font-bold">≧ 1.8</td></tr>
+                    <tr><td class="py-3 font-bold bg-gray-50 text-red-600">F4</td><td class="py-3 font-bold">≧ 6.5</td><td class="py-3 font-bold">≧ 12.0</td><td class="py-3 font-bold">≧ 1.98</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="bg-gray-50 px-4 py-2 text-[10px] text-gray-400 text-center">
+            * 數據供臨床評估參考，詳細給付依健保署公告為準
         </div>
     </div>
+</div>
 
-    <script>
-        function searchFunction() {
-            let input = document.getElementById('searchInput');
-            let filter = input.value.toUpperCase();
-            let entries = document.getElementsByClassName('entry');
-            let dividers = document.getElementsByClassName('divider');
-            let indentBoxes = document.getElementsByClassName('indent-box');
+<script>
+    function searchFunction() {
+        let input = document.getElementById('searchInput');
+        let filter = input.value.toUpperCase();
+        let entries = document.getElementsByClassName('entry');
+        let dividers = document.getElementsByClassName('divider');
+        let indentBoxes = document.getElementsByClassName('indent-box');
+        let titles = document.getElementsByClassName('section-title');
 
-            for (let i = 0; i < entries.length; i++) {
-                let text = entries[i].textContent || entries[i].innerText;
-                if (text.toUpperCase().indexOf(filter) > -1) {
-                    entries[i].style.display = "";
-                } else {
-                    entries[i].style.display = "none";
-                }
-            }
-            
-            // 同步控制縮進框顯示
-            for (let k = 0; k < indentBoxes.length; k++) {
-                let boxText = indentBoxes[k].textContent || indentBoxes[k].innerText;
-                indentBoxes[k].style.display = (boxText.toUpperCase().indexOf(filter) > -1 || filter === "") ? "" : "none";
-            }
-
-            for (let j = 0; j < dividers.length; j++) {
-                dividers[j].style.display = filter === "" ? "" : "none";
-            }
+        for (let i = 0; i < entries.length; i++) {
+            let text = entries[i].textContent || entries[i].innerText;
+            entries[i].style.display = (text.toUpperCase().indexOf(filter) > -1) ? "" : "none";
+        }
+        
+        for (let k = 0; k < indentBoxes.length; k++) {
+            let boxText = indentBoxes[k].textContent || indentBoxes[k].innerText;
+            indentBoxes[k].style.display = (boxText.toUpperCase().indexOf(filter) > -1 || filter === "") ? "" : "none";
         }
 
-        function openModal() { document.getElementById('modal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
-        window.onclick = function(event) {
-            let modal = document.getElementById('modal');
-            if (event.target == modal) { closeModal(); }
+        // 搜尋時顯示/隱藏區塊標題與裝飾線
+        let isSearching = filter !== "";
+        for (let j = 0; j < dividers.length; j++) dividers[j].style.display = isSearching ? "none" : "";
+        for (let t = 0; t < titles.length; t++) {
+            let tText = titles[t].textContent || titles[t].innerText;
+            titles[t].style.display = (tText.toUpperCase().indexOf(filter) > -1 || !isSearching) ? "" : "";
         }
-    </script>
+    }
+
+    function openModal() { document.getElementById('modal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('modal').style.display = 'none'; }
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('modal')) closeModal();
+    }
+</script>
+
 </body>
 </html>
